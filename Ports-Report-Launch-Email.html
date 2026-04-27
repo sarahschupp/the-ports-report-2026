@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>The Ports Report — Strategic Intelligence Platform | NAI Global</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; background-color: #F0F0F0; font-family: 'Inter', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    img { border: 0; display: block; max-width: 100%; }
+    a { color: #C8102E; text-decoration: none; }
+
+    /* ── Wrapper ── */
+    .email-wrapper { background: #F0F0F0; padding: 32px 16px; }
+    .email-body {
+      max-width: 620px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(35,31,32,.14);
+    }
+
+    /* ── Pre-header (hidden in most clients) ── */
+    .preheader {
+      display: none; max-height: 0; overflow: hidden;
+      font-size: 1px; line-height: 1px; color: #F0F0F0;
+    }
+
+    /* ── Header ── */
+    .email-header {
+      background: #231F20;
+      padding: 28px 40px 24px;
+      border-bottom: 4px solid #C8102E;
+    }
+    .header-meta {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      color: rgba(255,255,255,.38);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .header-logo { margin-bottom: 0; }
+    .header-logo svg { height: 36px; width: auto; display: block; }
+
+    /* ── Intelligence badge row ── */
+    .intel-bar {
+      background: #C8102E;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .intel-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      color: rgba(255,255,255,.9);
+      text-transform: uppercase;
+    }
+    .intel-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.65);
+    }
+
+    /* ── Body sections ── */
+    .section { padding: 36px 40px; }
+    .section-gray { background: #F5F5F5; padding: 32px 40px; }
+    .section-dark { background: #231F20; padding: 36px 40px; }
+
+    /* ── Typography ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #C8102E;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #231F20;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #231F20;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #231F20;
+      margin-bottom: 6px;
+    }
+    .body-copy {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4A4A4D;
+      margin-bottom: 16px;
+    }
+    .body-copy strong { color: #231F20; font-weight: 600; }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: #E8E8E8; margin: 0 40px; }
+    .divider-red { height: 3px; background: #C8102E; }
+
+    /* ── Strategic Implication box ── */
+    .strat-impl {
+      border-left: 4px solid #C8102E;
+      background: #FFF8F8;
+      padding: 14px 18px;
+      margin: 16px 0 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .strat-impl-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #C8102E;
+      margin-bottom: 6px;
+    }
+    .strat-impl p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #4A4A4D;
+      margin: 0;
+    }
+    .strat-impl p strong { color: #231F20; }
+
+    /* ── Port data blocks ── */
+    .port-block {
+      background: #FFFFFF;
+      border: 1px solid #E8E8E8;
+      border-radius: 4px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+      border-top: 3px solid #C8102E;
+    }
+    .port-block:last-child { margin-bottom: 0; }
+
+    .port-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .port-name { font-family: 'Montserrat', Arial, sans-serif; font-size: 14px; font-weight: 700; color: #231F20; }
+    .port-code { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: #6D6E71; letter-spacing: .1em; }
+
+    .port-stat-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+    .port-stat { }
+    .port-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #A7A8AA; margin-bottom: 2px; }
+    .port-stat-value { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #231F20; letter-spacing: -.01em; line-height: 1; }
+    .port-stat-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6D6E71; margin-top: 2px; }
+    .port-stat-value.green { color: #1A7F37; }
+    .port-stat-value.red-text { color: #C8102E; }
+
+    /* ── Key Takeaway ── */
+    .takeaway {
+      background: #231F20;
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .takeaway-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #C8102E;
+      margin-bottom: 8px;
+    }
+    .takeaway p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,.85);
+      margin: 0;
+    }
+    .takeaway p strong { color: #fff; font-weight: 600; }
+
+    /* ── Feature tile ── */
+    .feature-tile {
+      background: #F5F5F5;
+      border: 1px solid #E8E8E8;
+      border-radius: 4px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .feature-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #C8102E;
+      letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+    .feature-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #231F20;
+      margin-bottom: 6px;
+    }
+    .feature-desc { font-size: 13px; color: #6D6E71; line-height: 1.6; margin: 0; }
+
+    /* ── CTAs ── */
+    .cta-primary {
+      display: inline-block;
+      background: #C8102E;
+      color: #fff !important;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      text-align: center;
+    }
+    .cta-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #231F20 !important;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 13px 32px;
+      border: 2px solid #231F20;
+      border-radius: 3px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* ── Signature ── */
+    .sig-wrap { display: flex; align-items: center; gap: 18px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #E8E8E8; }
+    .sig-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .sig-name { font-family: 'Montserrat', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #231F20; }
+    .sig-title { font-size: 12px; color: #6D6E71; margin-top: 2px; }
+    .sig-contact { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #C8102E; margin-top: 4px; }
+
+    /* ── Footer ── */
+    .email-footer {
+      background: #111111;
+      padding: 24px 40px;
+      text-align: center;
+    }
+    .footer-logo { margin: 0 auto 14px; }
+    .footer-legal { font-size: 10px; color: rgba(255,255,255,.28); line-height: 1.6; font-family: 'JetBrains Mono', monospace; }
+    .footer-links { margin-bottom: 12px; }
+    .footer-links a { font-size: 11px; color: rgba(255,255,255,.45); text-decoration: none; margin: 0 10px; font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Responsive ── */
+    @media only screen and (max-width: 480px) {
+      .section, .section-gray, .section-dark { padding: 28px 24px; }
+      .email-header { padding: 22px 24px 20px; }
+      .intel-bar { padding: 10px 24px; }
+      h1 { font-size: 22px; }
+      .port-stat-row { gap: 16px; }
+      .port-stat-value { font-size: 18px; }
+      .cta-primary, .cta-secondary { display: block; text-align: center; margin-bottom: 10px; }
+      .sig-wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .divider { margin: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="preheader">
+  The Ports Report is now a live Strategic Intelligence Platform. Five U.S. gateways. Real-time data. One named advisor.
+</div>
+
+<div class="email-wrapper">
+<div class="email-body">
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="email-header">
+    <div class="header-meta">Confidential · For Authorized Recipients Only</div>
+    <div class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 60" height="36" aria-label="NAI Global"><path d="M9.14,27.13V47.31H0V12.67H11.8l10.81,16v-16h10V31.46L22.27,45.26ZM61.5,47.31h9.14V12.68H61.5Zm-13.61,0H58.43V1.77L24.36,47.3h10.8l14.29-19V38.66l-7.31.06Zm49.61,0h4.14V31.39H89.25V36.2h6.51a7,7,0,0,1-2.06,4.72,7,7,0,0,1-4.94,1.63A7.63,7.63,0,0,1,85,41.71a7.11,7.11,0,0,1-2.47-2.24,9.94,9.94,0,0,1-1.38-3.15,14.91,14.91,0,0,1-.44-3.6A16,16,0,0,1,81.19,29a9.68,9.68,0,0,1,1.38-3.23A7,7,0,0,1,85,23.47a7.63,7.63,0,0,1,3.72-.84,6.5,6.5,0,0,1,4,1.24A6.12,6.12,0,0,1,95,27.58h6.19a10.87,10.87,0,0,0-1.39-4.46A11.25,11.25,0,0,0,97,19.86a12.33,12.33,0,0,0-3.82-2,14.37,14.37,0,0,0-4.38-.68,14.81,14.81,0,0,0-6.11,1.2,13,13,0,0,0-4.53,3.29,14.74,14.74,0,0,0-2.84,4.95,18.4,18.4,0,0,0-1,6.1,17.81,17.81,0,0,0,1,6,14.18,14.18,0,0,0,2.85,4.86,13.25,13.25,0,0,0,4.53,3.26A14.92,14.92,0,0,0,88.76,48,10.56,10.56,0,0,0,93,47.09,9.91,9.91,0,0,0,96.84,44Zm6.54,0h5.88V17.87H104Zm8.52-6a9.78,9.78,0,0,0,5.71,5.8,12.08,12.08,0,0,0,4.54.8,12.32,12.32,0,0,0,4.57-.8,9.76,9.76,0,0,0,5.72-5.8,12.72,12.72,0,0,0,.79-4.62A13,13,0,0,0,133.1,32a9.72,9.72,0,0,0-5.72-5.82,12.32,12.32,0,0,0-4.57-.8,12.08,12.08,0,0,0-4.54.8A9.74,9.74,0,0,0,112.56,32a13.17,13.17,0,0,0-.78,4.64A12.94,12.94,0,0,0,112.56,41.29Zm5.34-7.13a6.29,6.29,0,0,1,.85-2.18,4.52,4.52,0,0,1,1.59-1.54,4.68,4.68,0,0,1,2.47-.6,4.82,4.82,0,0,1,2.5.6A4.66,4.66,0,0,1,126.92,32a6.27,6.27,0,0,1,.84,2.18,12.35,12.35,0,0,1,.25,2.51,12.09,12.09,0,0,1-.25,2.49,6.43,6.43,0,0,1-.84,2.18,4.41,4.41,0,0,1-1.61,1.54,4.92,4.92,0,0,1-2.5.58,4.78,4.78,0,0,1-2.47-.58,4.27,4.27,0,0,1-1.59-1.54,6.45,6.45,0,0,1-.85-2.18,12.09,12.09,0,0,1-.25-2.49A12.35,12.35,0,0,1,117.9,34.16Zm17.91,13.15h5.56V44.58h.08a5.4,5.4,0,0,0,2.8,2.55,11,11,0,0,0,4.2.76,8.08,8.08,0,0,0,6-2.7,10.64,10.64,0,0,0,2-3.51,14.4,14.4,0,0,0,.79-5,14.4,14.4,0,0,0-.79-5.05,10.43,10.43,0,0,0-2-3.49,8.16,8.16,0,0,0-6-2.68,9.78,9.78,0,0,0-3.81.76,6.23,6.23,0,0,0-2.91,2.43h-.06V17.87h-5.87Zm15.31-8.09a6.48,6.48,0,0,1-.91,2.18,4.47,4.47,0,0,1-1.56,1.5,4.7,4.7,0,0,1-4.45,0,4.5,4.5,0,0,1-1.54-1.5,6.68,6.68,0,0,1-.9-2.18,11.26,11.26,0,0,1-.29-2.55,11.48,11.48,0,0,1,.29-2.59,6.77,6.77,0,0,1,.9-2.18,4.69,4.69,0,0,1,1.54-1.5,4.7,4.7,0,0,1,4.45,0,4.66,4.66,0,0,1,1.56,1.5,6.57,6.57,0,0,1,.91,2.18,11.48,11.48,0,0,1,.29,2.59A11.26,11.26,0,0,1,151.12,39.22Zm14.13-6.66a3.31,3.31,0,0,1,1.17-2.5,4.38,4.38,0,0,1,2.69-.75,9.44,9.44,0,0,1,1.45.1,3.28,3.28,0,0,1,1.19.41,2.22,2.22,0,0,1,.82.87,3.09,3.09,0,0,1,.31,1.51,1.69,1.69,0,0,1-.57,1.38,3.85,3.85,0,0,1-1.55.72,14.92,14.92,0,0,1-2.2.38c-.82.08-1.68.19-2.59.33a23,23,0,0,0-2.65.55A7.74,7.74,0,0,0,161,36.62a5,5,0,0,0-1.64,1.88,6.41,6.41,0,0,0-.62,3,6.74,6.74,0,0,0,.55,2.85,5.33,5.33,0,0,0,1.55,2,6.65,6.65,0,0,0,2.31,1.18,10,10,0,0,0,2.84.39,13.13,13.13,0,0,0,3.88-.59,7.79,7.79,0,0,0,3.29-2,7.24,7.24,0,0,0,.15,1,7,7,0,0,0,.26,1h5.94a5.09,5.09,0,0,1-.57-2,20.5,20.5,0,0,1-.17-2.77V31.47a5.15,5.15,0,0,0-.87-3.1,5.89,5.89,0,0,0-2.22-1.85,10.31,10.31,0,0,0-3-.89,24,24,0,0,0-3.26-.22,18,18,0,0,0-3.54.35,9.69,9.69,0,0,0-3.14,1.18,7.11,7.11,0,0,0-2.31,2.19,6.88,6.88,0,0,0-1,3.43Zm7.63,6.51a11.1,11.1,0,0,1-.1,1.33,4.34,4.34,0,0,1-.56,1.63,3.77,3.77,0,0,1-1.39,1.39,5.15,5.15,0,0,1-2.66.58,6.72,6.72,0,0,1-1.35-.13,3.35,3.35,0,0,1-1.15-.43,2.3,2.3,0,0,1-.78-.83,2.8,2.8,0,0,1-.29-1.34,2.93,2.93,0,0,1,.29-1.35,2.51,2.51,0,0,1,.76-.91,3.74,3.74,0,0,1,1.09-.56,8.36,8.36,0,0,1,1.31-.33c.43-.08.89-.15,1.37-.21a12.76,12.76,0,0,0,1.35-.21,9.39,9.39,0,0,0,1.19-.3,2.64,2.64,0,0,0,.92-.52Zm8.67,8.24h5.87V17.87h-5.87Z" fill="#fff"/></svg>
+    </div>
+  </div>
+
+  <!-- Intelligence bar -->
+  <div class="intel-bar">
+    <span class="intel-badge">Strategic Intelligence Brief · Q2 2026</span>
+    <span class="intel-date">Apr 24, 2026 · 08:30 ET</span>
+  </div>
+
+  <!-- ═══ HOOK ═══ -->
+  <div class="section">
+    <div class="eyebrow">Platform Launch</div>
+    <h1>The Ports Report is now a live Strategic Intelligence Platform.</h1>
+    <p class="body-copy">
+      What started as a quarterly briefing document has been rebuilt from the ground up as a continuously updated intelligence terminal — covering five U.S. container gateways, live vessel data, and a diagnostic tool that quantifies the cost of deferred site selection decisions.
+    </p>
+    <p class="body-copy">
+      This brief summarizes the three market signals that shifted since our last report, and what they mean for your 2026 and 2027 distribution planning.
+    </p>
+
+    <div class="takeaway">
+      <div class="takeaway-label">Key Takeaway</div>
+      <p>The structural shift is already priced in at every gateway except Houston. <strong>The firms acting on 2027 lease commitments now are locking rates 18–24 months ahead of the next demand surge.</strong> The ones waiting are bidding against each other at the peak.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ MARKET SNAPSHOT ═══ -->
+  <div class="section">
+    <div class="eyebrow">Market Snapshot — Five Gateways</div>
+    <h2>Three signals. Three strategic windows.</h2>
+    <p class="body-copy" style="margin-bottom: 24px;">
+      The data below is pulled from Port Authority annual reports, Port of Virginia capital program disclosures, and Port Houston CY2024 container reports. Each figure has a verified source link in the platform.
+    </p>
+
+    <!-- PORT BLOCK 1: Houston -->
+    <div class="port-block">
+      <div class="port-header">
+        <div>
+          <div class="port-code">USHOU · FTZ #84 · Gulf Coast</div>
+          <div class="port-name">Port of Houston — Gulf Coast Export Engine</div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fff;background:#1A7F37;padding:4px 10px;border-radius:2px;letter-spacing:.1em;white-space:nowrap;">
+          ▲ BULLISH
+        </div>
+      </div>
+      <div class="port-stat-row">
+        <div class="port-stat">
+          <div class="port-stat-label">Inbound TEU</div>
+          <div class="port-stat-value">884,831</div>
+          <div class="port-stat-sub">CY2024</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">Outbound TEU</div>
+          <div class="port-stat-value green">916,080</div>
+          <div class="port-stat-sub">Exports exceed imports</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">U.S. Rank</div>
+          <div class="port-stat-value">#7</div>
+          <div class="port-stat-sub">By container volume</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">Asking Rent</div>
+          <div class="port-stat-value">$9.50</div>
+          <div class="port-stat-sub">PSF/yr NNN</div>
+        </div>
+      </div>
+      <div class="strat-impl">
+        <div class="strat-impl-label">Strategic Implication</div>
+        <p>Houston is structurally different from every other gateway on this list: it is one of the only major U.S. ports where exports exceed imports. This inverts the typical industrial real estate thesis. <strong>FTZ #84 inverted tariff benefits are unmatched in the Gulf region</strong> — components enter duty-free and finished goods pay the lower finished-product rate. For manufacturers importing machinery and raw materials into the U.S. Gulf corridor, the total landed cost differential vs. coastal peers is 12–18%. Model this before signing anywhere else.</p>
+      </div>
+    </div>
+
+    <!-- PORT BLOCK 2: Savannah -->
+    <div class="port-block">
+      <div class="port-header">
+        <div>
+          <div class="port-code">USSAV · FTZ #104 · Southeast</div>
+          <div class="port-name">Port of Savannah — Southeast Logistics Capital</div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fff;background:#1A7F37;padding:4px 10px;border-radius:2px;letter-spacing:.1em;white-space:nowrap;">
+          ▲ BULLISH
+        </div>
+      </div>
+      <div class="port-stat-row">
+        <div class="port-stat">
+          <div class="port-stat-label">FY2025 TEU</div>
+          <div class="port-stat-value">5.70M</div>
+          <div class="port-stat-sub">Second-busiest year on record</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">TEU Growth</div>
+          <div class="port-stat-value green">+5.8%</div>
+          <div class="port-stat-sub">YoY</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">Vessel-to-Rail</div>
+          <div class="port-stat-value">22 hrs</div>
+          <div class="port-stat-sub">Industry fastest · down from 28</div>
+        </div>
+      </div>
+      <div class="strat-impl">
+        <div class="strat-impl-label">Strategic Implication</div>
+        <p>The Mason Mega Rail Terminal's 22-hour vessel-to-rail transfer is now the operational benchmark every competing East Coast port is chasing. <strong>Savannah is planning a 60% capacity expansion</strong> — but the build-to-suit incentive stack in Pooler and Statesboro is tightening in lockstep with that commitment. Clients who require Southeast distribution into the I-75/I-95 corridor should close site selection before Q4 2026 or face a materially different cost structure.</p>
+      </div>
+    </div>
+
+    <!-- PORT BLOCK 3: Long Beach -->
+    <div class="port-block">
+      <div class="port-header">
+        <div>
+          <div class="port-code">USLGB · FTZ #50 · West Coast</div>
+          <div class="port-name">Port of Long Beach — Transpacific Gateway</div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fbbf24;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.4);padding:4px 10px;border-radius:2px;letter-spacing:.1em;white-space:nowrap;">
+          ▼ CAUTIOUS
+        </div>
+      </div>
+      <div class="port-stat-row">
+        <div class="port-stat">
+          <div class="port-stat-label">CY2025 TEU</div>
+          <div class="port-stat-value">9.9M</div>
+          <div class="port-stat-sub">Record — 115-year history</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">TEU Growth</div>
+          <div class="port-stat-value green">+3.1%</div>
+          <div class="port-stat-sub">YoY</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">Industrial Vacancy</div>
+          <div class="port-stat-value red-text">4.2%</div>
+          <div class="port-stat-sub">Inland Empire submarket</div>
+        </div>
+        <div class="port-stat">
+          <div class="port-stat-label">Avg Rent</div>
+          <div class="port-stat-value">$18.80</div>
+          <div class="port-stat-sub">PSF/yr NNN</div>
+        </div>
+      </div>
+      <div class="strat-impl">
+        <div class="strat-impl-label">Strategic Implication</div>
+        <p>Long Beach's 9.9M TEU record was built on frontloading ahead of anticipated tariff escalation — a demand pattern that is now working through retailer inventory. <strong>Vacancy in the Inland Empire has eased from its 2024 low of 3.4% to 4.2%</strong> as new industrial supply absorbs. This is a brief window. West Coast labor volatility and drayage cost structure ($850–$1,100 per container) remain structural headwinds for firms modeling inbound vs. East Coast alternatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-red"></div>
+
+  <!-- ═══ PLATFORM FEATURE ═══ -->
+  <div class="section-gray">
+    <div class="eyebrow">Platform Feature</div>
+    <h2>The Strategic Site Selection Tool is now live.</h2>
+    <p class="body-copy">
+      The Ports Report now includes a <strong>12-criteria diagnostic engine</strong> that scores all five gateways against your specific operational inputs — cargo origin, speed requirements, rail access, FTZ eligibility, and distribution reach. In under three minutes, it produces a ranked gateway recommendation with a veracity layer citing the source data behind every score.
+    </p>
+
+    <div class="feature-tile">
+      <div class="feature-number">01</div>
+      <div class="feature-title">Cost of Inaction Calculator</div>
+      <p class="feature-desc">Input your projected annual import volume, current drayage rate, and target delivery window. The calculator quantifies the monthly cost of delayed port-market commitment — drayage premium, detention exposure, and missed incentive capture — in dollar terms your CFO can act on.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-number">02</div>
+      <div class="feature-title">FTZ Activation Roadmap</div>
+      <p class="feature-desc">A 4-phase CBP activation guide covering zone designation, security audit, operator's bond, and Weekly Entry election — with verified regulatory citations. Most clients have FTZ access they have never activated.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-number">03</div>
+      <div class="feature-title">International Corridor Playbooks</div>
+      <p class="feature-desc">Italian, German, Spanish, Japanese, Korean, and Chinese manufacturer profiles with port-specific rationale, FTZ language notes, and recommended submarket shortlists. Built for the first conversation with your CEO, not the tenth.</p>
+    </div>
+
+    <div class="takeaway" style="margin-top: 24px;">
+      <div class="takeaway-label">Analyst Note</div>
+      <p>Frontloading in Q4 2025 has created a temporary capacity crunch in the Gulf Corridor. <strong>Firms planning 2027 distribution commitments should model lease terms now</strong> — before the next demand cycle locks in a structurally higher asking rent baseline across all five gateways.</p>
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div class="section" style="text-align: center; padding-top: 40px; padding-bottom: 40px;">
+    <div class="eyebrow" style="text-align: center;">Ready to act on this intelligence?</div>
+    <h2 style="margin-bottom: 8px;">Access the Terminal.</h2>
+    <p class="body-copy" style="max-width: 440px; margin: 0 auto 28px; text-align: center;">
+      The platform is live and unsecured for preview. No login required. Five gateways, live vessel data, and a site scoring diagnostic — in one place.
+    </p>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+      <a href="file:///Users/sarahschupp/NAI/NAI/The%20Ports%20Report/The%20Ports%20Report.html" class="cta-primary">Access the Terminal →</a>
+      <a href="mailto:chris.schupp@nairobertlynn.com?subject=Strategic%20Briefing%20Request%20%E2%80%94%20Ports%20Report" class="cta-secondary">Schedule a Briefing</a>
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A7A8AA;letter-spacing:.06em;">
+      Response guaranteed within one business day.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ SIGNATURE ═══ -->
+  <div class="section" style="padding-top: 28px; padding-bottom: 32px;">
+    <div class="sig-wrap">
+      <img class="sig-photo" src="chris-schupp.png" alt="Chris Schupp" width="56" height="56" />
+      <div>
+        <div class="sig-name">Chris Schupp</div>
+        <div class="sig-title">Executive Managing Director · NAI Global / NAI Robert Lynn</div>
+        <div class="sig-contact">chris.schupp@nairobertlynn.com · +1 (972) 897-8035</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#6D6E71;line-height:1.65;margin-top:20px;margin-bottom:0;">
+      I have spent the better part of two years building the data infrastructure behind this platform. If a single figure on any of these five port profiles is wrong, I want to know. If a market in your supply chain is missing, tell me. This is a working tool, not a pitch deck.
+    </p>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div class="email-footer">
+    <div class="footer-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 60" height="24" aria-label="NAI Global" style="opacity:.5;display:block;margin:0 auto 14px;"><path d="M9.14,27.13V47.31H0V12.67H11.8l10.81,16v-16h10V31.46L22.27,45.26ZM61.5,47.31h9.14V12.68H61.5Zm-13.61,0H58.43V1.77L24.36,47.3h10.8l14.29-19V38.66l-7.31.06Zm49.61,0h4.14V31.39H89.25V36.2h6.51a7,7,0,0,1-2.06,4.72,7,7,0,0,1-4.94,1.63A7.63,7.63,0,0,1,85,41.71a7.11,7.11,0,0,1-2.47-2.24,9.94,9.94,0,0,1-1.38-3.15,14.91,14.91,0,0,1-.44-3.6A16,16,0,0,1,81.19,29a9.68,9.68,0,0,1,1.38-3.23A7,7,0,0,1,85,23.47a7.63,7.63,0,0,1,3.72-.84,6.5,6.5,0,0,1,4,1.24A6.12,6.12,0,0,1,95,27.58h6.19a10.87,10.87,0,0,0-1.39-4.46A11.25,11.25,0,0,0,97,19.86a12.33,12.33,0,0,0-3.82-2,14.37,14.37,0,0,0-4.38-.68,14.81,14.81,0,0,0-6.11,1.2,13,13,0,0,0-4.53,3.29,14.74,14.74,0,0,0-2.84,4.95,18.4,18.4,0,0,0-1,6.1,17.81,17.81,0,0,0,1,6,14.18,14.18,0,0,0,2.85,4.86,13.25,13.25,0,0,0,4.53,3.26A14.92,14.92,0,0,0,88.76,48,10.56,10.56,0,0,0,93,47.09,9.91,9.91,0,0,0,96.84,44Zm6.54,0h5.88V17.87H104Zm8.52-6a9.78,9.78,0,0,0,5.71,5.8,12.08,12.08,0,0,0,4.54.8,12.32,12.32,0,0,0,4.57-.8,9.76,9.76,0,0,0,5.72-5.8,12.72,12.72,0,0,0,.79-4.62A13,13,0,0,0,133.1,32a9.72,9.72,0,0,0-5.72-5.82,12.32,12.32,0,0,0-4.57-.8,12.08,12.08,0,0,0-4.54.8A9.74,9.74,0,0,0,112.56,32a13.17,13.17,0,0,0-.78,4.64A12.94,12.94,0,0,0,112.56,41.29Zm5.34-7.13a6.29,6.29,0,0,1,.85-2.18,4.52,4.52,0,0,1,1.59-1.54,4.68,4.68,0,0,1,2.47-.6,4.82,4.82,0,0,1,2.5.6A4.66,4.66,0,0,1,126.92,32a6.27,6.27,0,0,1,.84,2.18,12.35,12.35,0,0,1,.25,2.51,12.09,12.09,0,0,1-.25,2.49,6.43,6.43,0,0,1-.84,2.18,4.41,4.41,0,0,1-1.61,1.54,4.92,4.92,0,0,1-2.5.58,4.78,4.78,0,0,1-2.47-.58,4.27,4.27,0,0,1-1.59-1.54,6.45,6.45,0,0,1-.85-2.18,12.09,12.09,0,0,1-.25-2.49A12.35,12.35,0,0,1,117.9,34.16Zm17.91,13.15h5.56V44.58h.08a5.4,5.4,0,0,0,2.8,2.55,11,11,0,0,0,4.2.76,8.08,8.08,0,0,0,6-2.7,10.64,10.64,0,0,0,2-3.51,14.4,14.4,0,0,0,.79-5,14.4,14.4,0,0,0-.79-5.05,10.43,10.43,0,0,0-2-3.49,8.16,8.16,0,0,0-6-2.68,9.78,9.78,0,0,0-3.81.76,6.23,6.23,0,0,0-2.91,2.43h-.06V17.87h-5.87Zm15.31-8.09a6.48,6.48,0,0,1-.91,2.18,4.47,4.47,0,0,1-1.56,1.5,4.7,4.7,0,0,1-4.45,0,4.5,4.5,0,0,1-1.54-1.5,6.68,6.68,0,0,1-.9-2.18,11.26,11.26,0,0,1-.29-2.55,11.48,11.48,0,0,1,.29-2.59,6.77,6.77,0,0,1,.9-2.18,4.69,4.69,0,0,1,1.54-1.5,4.7,4.7,0,0,1,4.45,0,4.66,4.66,0,0,1,1.56,1.5,6.57,6.57,0,0,1,.91,2.18,11.48,11.48,0,0,1,.29,2.59A11.26,11.26,0,0,1,151.12,39.22Zm14.13-6.66a3.31,3.31,0,0,1,1.17-2.5,4.38,4.38,0,0,1,2.69-.75,9.44,9.44,0,0,1,1.45.1,3.28,3.28,0,0,1,1.19.41,2.22,2.22,0,0,1,.82.87,3.09,3.09,0,0,1,.31,1.51,1.69,1.69,0,0,1-.57,1.38,3.85,3.85,0,0,1-1.55.72,14.92,14.92,0,0,1-2.2.38c-.82.08-1.68.19-2.59.33a23,23,0,0,0-2.65.55A7.74,7.74,0,0,0,161,36.62a5,5,0,0,0-1.64,1.88,6.41,6.41,0,0,0-.62,3,6.74,6.74,0,0,0,.55,2.85,5.33,5.33,0,0,0,1.55,2,6.65,6.65,0,0,0,2.31,1.18,10,10,0,0,0,2.84.39,13.13,13.13,0,0,0,3.88-.59,7.79,7.79,0,0,0,3.29-2,7.24,7.24,0,0,0,.15,1,7,7,0,0,0,.26,1h5.94a5.09,5.09,0,0,1-.57-2,20.5,20.5,0,0,1-.17-2.77V31.47a5.15,5.15,0,0,0-.87-3.1,5.89,5.89,0,0,0-2.22-1.85,10.31,10.31,0,0,0-3-.89,24,24,0,0,0-3.26-.22,18,18,0,0,0-3.54.35,9.69,9.69,0,0,0-3.14,1.18,7.11,7.11,0,0,0-2.31,2.19,6.88,6.88,0,0,0-1,3.43Zm7.63,6.51a11.1,11.1,0,0,1-.1,1.33,4.34,4.34,0,0,1-.56,1.63,3.77,3.77,0,0,1-1.39,1.39,5.15,5.15,0,0,1-2.66.58,6.72,6.72,0,0,1-1.35-.13,3.35,3.35,0,0,1-1.15-.43,2.3,2.3,0,0,1-.78-.83,2.8,2.8,0,0,1-.29-1.34,2.93,2.93,0,0,1,.29-1.35,2.51,2.51,0,0,1,.76-.91,3.74,3.74,0,0,1,1.09-.56,8.36,8.36,0,0,1,1.31-.33c.43-.08.89-.15,1.37-.21a12.76,12.76,0,0,0,1.35-.21,9.39,9.39,0,0,0,1.19-.3,2.64,2.64,0,0,0,.92-.52Zm8.67,8.24h5.87V17.87h-5.87Z" fill="#fff"/></svg>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.naiglobal.com">naiglobal.com</a>
+      <a href="https://www.naiglobal.com/privacy-policy">Privacy Policy</a>
+      <a href="mailto:chris.schupp@nairobertlynn.com?subject=Unsubscribe">Unsubscribe</a>
+    </div>
+    <p class="footer-legal">
+      NAI Global · 375 Park Avenue, Suite 2607, New York, NY 10152<br />
+      This message is intended for the named recipient only. The data contained herein is sourced from Port Authority annual reports,<br />
+      U.S. Army Corps of Engineers, and Foreign-Trade Zones Board public disclosures. All figures are current as of Apr 24, 2026.<br />
+      &copy; 2026 NAI Global LLC. All rights reserved.
+    </p>
+  </div>
+
+</div><!-- /email-body -->
+</div><!-- /email-wrapper -->
+
+</body>
+</html>
