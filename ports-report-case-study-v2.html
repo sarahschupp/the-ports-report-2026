@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Ports Report | Strategic Intelligence for Gateway Site Selection | NAI Robert Lynn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:      #C8102E;
+      --red-dark: #9B0D22;
+      --charcoal: #231F20;
+      --gray:     #6D6E71;
+      --n50:      #FAFAFA;
+      --n100:     #F5F5F5;
+      --n200:     #E8E8E8;
+      --n300:     #D1D1D1;
+      --n500:     #6D6E71;
+      --n700:     #333334;
+      --font-head: 'Montserrat', Arial, sans-serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --ease: 300ms cubic-bezier(.4,0,.2,1);
+      --ease-lux: 600ms cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: #fff;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    /* ---- Layout ---- */
+    .container      { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .container-sm   { max-width: 820px;  margin: 0 auto; padding: 0 48px; }
+    section { padding: 120px 0; }
+
+    /* ---- Scroll Reveal ---- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--ease-lux), transform var(--ease-lux); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 100ms; }
+    .d2 { transition-delay: 200ms; }
+    .d3 { transition-delay: 300ms; }
+    .d4 { transition-delay: 400ms; }
+
+    /* ---- Shared Typography ---- */
+    .eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(34px, 3.6vw, 52px);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -.025em;
+      color: var(--charcoal); margin-bottom: 22px;
+    }
+    .section-lead {
+      font-size: 18px; color: var(--gray);
+      line-height: 1.7; max-width: 64ch;
+    }
+    .source-note {
+      font-size: 11px; color: #999;
+      margin-top: 6px; line-height: 1.5;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(35,31,32,.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      height: 68px;
+      display: flex; align-items: center;
+      padding: 0 48px;
+      gap: 40px;
+    }
+    .nav-brand {
+      font-family: var(--font-head);
+      font-size: 13px; font-weight: 800;
+      color: #fff; letter-spacing: -.01em;
+      text-decoration: none; white-space: nowrap;
+    }
+    .nav-brand span { color: rgba(255,255,255,.35); font-weight: 500; }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a {
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: color var(--ease);
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--red);
+      color: #fff;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 2px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background var(--ease);
+      flex-shrink: 0;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* ---- HERO ---- */
+    #hero {
+      background: var(--charcoal);
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 160px 0 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .hero-overline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 28px;
+    }
+    .hero-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+    .hero-h1 {
+      font-family: var(--font-head);
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 900; line-height: 1.04;
+      letter-spacing: -.028em;
+      color: #fff; margin-bottom: 28px;
+    }
+    .hero-h1 em { color: rgba(255,255,255,.42); font-style: normal; }
+    .hero-sub {
+      font-size: 18px; line-height: 1.65;
+      color: rgba(255,255,255,.68);
+      max-width: 52ch;
+      margin-bottom: 40px;
+    }
+    .hero-cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red); color: #fff;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 14px 28px; border-radius: 2px;
+      text-decoration: none; display: inline-block;
+      transition: background var(--ease), transform var(--ease);
+    }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-ghost-light {
+      color: rgba(255,255,255,.65);
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color var(--ease);
+    }
+    .btn-ghost-light:hover { color: #fff; }
+
+    /* Hero right card */
+    .hero-takeaway-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .htc-header {
+      background: rgba(200,16,46,.15);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 16px 28px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--red);
+    }
+    .htc-body { padding: 28px; }
+    .htc-thesis {
+      font-size: 17px; font-weight: 500;
+      color: #fff; line-height: 1.45;
+      margin-bottom: 24px;
+    }
+    .htc-divider { height: 1px; background: rgba(255,255,255,.08); margin: 0 0 24px; }
+    .htc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .htc-stat-num {
+      font-family: var(--font-head);
+      font-size: 38px; font-weight: 900;
+      line-height: 1; color: #fff; letter-spacing: -.02em;
+    }
+    .htc-stat-num.accent { color: var(--red); }
+    .htc-stat-label {
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,.38);
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .htc-updates { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+    .htc-update {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .htc-update:last-child { border-bottom: none; padding-bottom: 0; }
+    .htc-port {
+      font-size: 9px; font-weight: 700;
+      color: var(--red); letter-spacing: .1em;
+      text-transform: uppercase; white-space: nowrap;
+      min-width: 70px; padding-top: 1px;
+    }
+    .htc-text { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.45; }
+    .hs-badge {
+      display: inline-flex; align-items: center;
+      background: rgba(200,16,46,.14);
+      border: 1px solid rgba(200,16,46,.25);
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-size: 9px; font-weight: 700;
+      color: var(--red); letter-spacing: .04em;
+      margin-left: 6px; white-space: nowrap;
+    }
+    .hero-accent { position: absolute; top: -200px; right: -200px; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(200,16,46,.07) 0%, transparent 70%);
+      pointer-events: none; }
+    .hero-red-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+
+    /* ---- EXECUTIVE SUMMARY ---- */
+    #exec-summary {
+      background: #fff;
+      padding: 0;
+      position: relative; z-index: 2;
+    }
+    .exec-card {
+      max-width: 1000px; margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-left: 5px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 16px 48px rgba(35,31,32,.10);
+      padding: 44px 52px;
+      position: relative; top: -60px;
+    }
+    .exec-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+    }
+    .exec-title {
+      font-family: var(--font-head);
+      font-size: 14px; font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--charcoal);
+    }
+    .exec-date { font-size: 11px; color: var(--gray); letter-spacing: .06em; }
+    .exec-bullets { display: flex; flex-direction: column; gap: 14px; }
+    .exec-bullet {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .exec-bullet-num {
+      font-family: var(--font-head);
+      font-size: 10px; font-weight: 800;
+      color: var(--red); letter-spacing: .1em;
+      padding-top: 3px; flex-shrink: 0; min-width: 18px;
+    }
+    .exec-bullet-text {
+      font-size: 15px; color: var(--charcoal);
+      line-height: 1.55;
+    }
+    .exec-bullet-text strong { font-weight: 700; }
+
+    /* ---- PARADOX (PROBLEM) ---- */
+    #paradox { background: var(--n50); border-top: 1px solid var(--n200); padding-top: 80px; }
+    .paradox-header-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start;
+      margin-bottom: 64px;
+    }
+    .diagnostic-matrix {
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .dm-header {
+      background: var(--charcoal);
+      padding: 16px 24px;
+      font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .dm-body { padding: 24px; }
+    .dm-axis-label {
+      font-size: 10px; font-weight: 700;
+      color: var(--gray); letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .dm-grid {
+      display: grid; grid-template-columns: 80px 1fr 1fr;
+      gap: 0;
+    }
+    .dm-cell {
+      padding: 14px 16px;
+      border: 1px solid var(--n200);
+      font-size: 12px;
+      margin: -1px 0 0 -1px;
+    }
+    .dm-cell.header {
+      background: var(--n100);
+      font-weight: 700; font-size: 10px;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gray);
+    }
+    .dm-cell.good { background: #F0FDF4; color: #15803D; font-weight: 600; }
+    .dm-cell.bad  { background: #FFF1F2; color: #9F1239; font-weight: 600; }
+    .dm-cell.mid  { background: #FFFBEB; color: #92400E; font-weight: 600; }
+
+    /* Problem cards */
+    .problem-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .problem-card {
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-radius: 8px;
+      padding: 32px;
+      position: relative;
+    }
+    .problem-card.dark {
+      background: var(--charcoal);
+    }
+    .problem-card.dark::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--red);
+      border-radius: 8px 8px 0 0;
+    }
+    .pc-num {
+      font-family: var(--font-head);
+      font-size: 48px; font-weight: 900;
+      color: var(--n200); line-height: 1; margin-bottom: 16px;
+      letter-spacing: -.03em;
+    }
+    .problem-card.dark .pc-num { color: rgba(255,255,255,.08); }
+    .pc-title { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 10px; }
+    .problem-card.dark .pc-title { color: #fff; }
+    .pc-body { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    .problem-card.dark .pc-body { color: rgba(255,255,255,.55); }
+
+    /* ---- VALUE LEAKAGE ---- */
+    #leakage { background: var(--n50); padding-top: 0; border-top: none; }
+    .leakage-model {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(35,31,32,.08);
+      border: 1px solid var(--n200);
+    }
+    .lm-header {
+      background: var(--charcoal);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .lm-header-left {}
+    .lm-overline {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 8px;
+    }
+    .lm-title {
+      font-family: var(--font-head);
+      font-size: 20px; font-weight: 800;
+      color: #fff; line-height: 1.2;
+    }
+    .lm-header-right { text-align: right; }
+    .lm-total-label { font-size: 12px; color: rgba(255,255,255,.4); margin-bottom: 4px; }
+    .lm-total-val {
+      font-family: var(--font-head);
+      font-size: 36px; font-weight: 900;
+      color: var(--red); letter-spacing: -.02em;
+    }
+    .lm-total-sub { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 4px; }
+    table.leakage {
+      width: 100%; border-collapse: collapse;
+    }
+    .leakage thead tr { background: var(--n100); }
+    .leakage th {
+      padding: 16px 24px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gray); text-align: left;
+      border-bottom: 1px solid var(--n200);
+      border-right: 1px solid var(--n200);
+    }
+    .leakage th:last-child { border-right: none; }
+    .leakage th.red { color: var(--red); }
+    .leakage tbody tr { border-bottom: 1px solid var(--n200); }
+    .leakage tbody tr:last-child { border-bottom: none; }
+    .leakage td {
+      padding: 22px 24px;
+      font-size: 13px;
+      vertical-align: top;
+      border-right: 1px solid var(--n200);
+    }
+    .leakage td:last-child { border-right: none; }
+    .ld-driver { font-weight: 700; color: var(--charcoal); }
+    .ld-sub { font-size: 11px; color: var(--gray); margin-top: 3px; font-weight: 400; }
+    .ld-bar-wrap { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+    .ld-bar-track {
+      height: 5px; background: var(--n200);
+      border-radius: 3px; overflow: hidden; width: 100%;
+    }
+    .ld-bar-fill { height: 100%; background: var(--red); border-radius: 3px; }
+    .ld-bad { color: #B91C1C; font-weight: 700; }
+    .ld-good { color: #065F46; font-weight: 700; }
+    .ld-good-sub { font-size: 11px; color: #4B7C60; font-weight: 400; }
+    .ld-impact { font-weight: 800; color: var(--charcoal); font-size: 14px; }
+    .ld-impact-sub { font-size: 11px; color: var(--gray); font-weight: 400; margin-top: 2px; }
+    .lm-footer {
+      padding: 24px 40px;
+      background: var(--n50);
+      border-top: 1px solid var(--n200);
+    }
+    .lm-footer-total {
+      font-size: 14px; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 10px;
+    }
+    .lm-footer-total span { color: var(--red); }
+    .lm-sensitivity {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .lm-sens-item {
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-radius: 6px;
+      padding: 10px 16px;
+      font-size: 12px;
+    }
+    .lm-sens-vol { font-weight: 700; color: var(--charcoal); }
+    .lm-sens-range { color: var(--red); font-weight: 700; }
+    .lm-sens-label { color: var(--gray); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ---- FOUR FORCES ---- */
+    #four-forces { background: #fff; }
+    .forces-intro { max-width: 680px; margin-bottom: 64px; }
+    .forces-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .force-card {
+      border: 1px solid var(--n200);
+      border-radius: 10px;
+      padding: 36px;
+      position: relative; overflow: hidden;
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+    .force-card:hover {
+      border-color: var(--red);
+      box-shadow: 0 8px 30px rgba(200,16,46,.08);
+    }
+    .force-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--n200);
+      transition: background var(--ease);
+    }
+    .force-card:hover::before { background: var(--red); }
+    .force-num {
+      font-size: 10px; font-weight: 800;
+      color: var(--red); letter-spacing: .12em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .force-title {
+      font-family: var(--font-head);
+      font-size: 20px; font-weight: 800;
+      color: var(--charcoal); line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .force-body { font-size: 14px; color: var(--gray); line-height: 1.65; margin-bottom: 24px; }
+    .force-triad {
+      background: var(--n50);
+      border: 1px solid var(--n200);
+      border-radius: 7px;
+      padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .force-triad-row {
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .ft-label {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--red); min-width: 80px; padding-top: 2px;
+    }
+    .ft-text { font-size: 12px; color: var(--charcoal); line-height: 1.5; }
+    .ft-text strong { font-weight: 700; }
+
+    /* ---- DECISION MATRIX ---- */
+    #matrix { background: var(--charcoal); color: #fff; }
+    #matrix .section-title { color: #fff; }
+    #matrix .section-lead { color: rgba(255,255,255,.5); }
+    .matrix-wrap {
+      margin-top: 52px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      overflow: hidden; overflow-x: auto;
+    }
+    table.matrix {
+      width: 100%; border-collapse: collapse; min-width: 1000px;
+    }
+    .matrix thead tr { background: rgba(255,255,255,.05); }
+    .matrix th {
+      padding: 15px 18px;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.38);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      text-align: left; white-space: nowrap;
+    }
+    .matrix th.r { text-align: right; }
+    .matrix th.c { text-align: center; }
+    .matrix tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: background var(--ease);
+    }
+    .matrix tbody tr:last-child { border-bottom: none; }
+    .matrix tbody tr:hover { background: rgba(255,255,255,.04); }
+    .matrix td {
+      padding: 16px 18px;
+      font-size: 13px; color: rgba(255,255,255,.75);
+    }
+    .matrix td.r { text-align: right; }
+    .matrix td.c { text-align: center; }
+    .rank-badge {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .rb-top { background: rgba(200,16,46,.2); color: var(--red); }
+    .rb-std { background: rgba(255,255,255,.07); color: rgba(255,255,255,.55); }
+    .gw-name { font-weight: 700; color: #fff; }
+    .region-pill {
+      font-size: 10px; font-weight: 600;
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.4);
+      padding: 2px 8px; border-radius: 3px;
+    }
+    .vac-tight  { background: rgba(16,185,129,.15); color: #34D399; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+    .vac-mod    { background: rgba(251,191,36,.12);  color: #FCD34D; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+    .vac-avail  { background: rgba(96,165,250,.12);  color: #93C5FD; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+    .teu-cell { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+    .teu-bar-bg { width: 64px; height: 4px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+    .teu-bar-fill { height: 100%; background: var(--red); border-radius: 3px; }
+    .fitness-score {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 28px;
+      border-radius: 4px;
+      font-family: var(--font-head);
+      font-size: 13px; font-weight: 800;
+    }
+    .fs-high   { background: rgba(16,185,129,.15); color: #34D399; }
+    .fs-strong { background: rgba(200,16,46,.15);  color: var(--red); }
+    .fs-mid    { background: rgba(251,191,36,.12);  color: #FCD34D; }
+    .implication {
+      font-size: 11px; color: rgba(255,255,255,.45);
+      line-height: 1.4; max-width: 200px;
+    }
+    .matrix-footer {
+      margin-top: 20px;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .matrix-source { font-size: 11px; color: rgba(255,255,255,.25); line-height: 1.5; }
+    .fitness-footnote {
+      font-size: 11px; color: rgba(255,255,255,.25);
+      max-width: 460px; line-height: 1.5;
+    }
+
+    /* ---- INFORMATION ARBITRAGE ---- */
+    #arbitrage { background: var(--n50); border-top: 1px solid var(--n200); }
+    .arb-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+      margin-top: 56px;
+    }
+    .arb-vs {
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-radius: 10px; overflow: hidden;
+    }
+    .arb-vs-head { display: grid; grid-template-columns: 1fr 1fr; }
+    .arb-col {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--n200);
+    }
+    .arb-col.nai { background: var(--charcoal); }
+    .arb-col.trad { background: var(--n100); }
+    .arb-col-label {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .arb-col.nai .arb-col-label { color: var(--red); }
+    .arb-col.trad .arb-col-label { color: var(--gray); }
+    .arb-col-sub {
+      font-size: 13px; font-weight: 700; margin-top: 4px;
+    }
+    .arb-col.nai .arb-col-sub { color: #fff; }
+    .arb-col.trad .arb-col-sub { color: var(--charcoal); }
+    .arb-rows {}
+    .arb-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--n200);
+    }
+    .arb-row:last-child { border-bottom: none; }
+    .arb-cell {
+      padding: 14px 22px;
+      font-size: 13px; font-weight: 500;
+    }
+    .arb-cell.nai-cell {
+      background: rgba(35,31,32,.02);
+      font-weight: 700; color: var(--charcoal);
+      border-right: 1px solid var(--n200);
+    }
+    .arb-cell.nai-cell .hl { color: var(--red); }
+    .arb-cell.trad-cell { color: var(--gray); }
+    .arb-callout {
+      background: var(--charcoal);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-top: 20px;
+    }
+    .arb-callout-label {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 10px;
+    }
+    .arb-callout-text {
+      font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.6;
+    }
+    .arb-right { display: flex; flex-direction: column; gap: 28px; }
+    .arb-stat {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .arb-stat-num {
+      font-family: var(--font-head);
+      font-size: 52px; font-weight: 900;
+      line-height: 1; letter-spacing: -.025em;
+      color: var(--charcoal); flex-shrink: 0;
+    }
+    .arb-stat-num .unit { font-size: 22px; color: var(--red); }
+    .arb-stat-title { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; }
+    .arb-stat-body { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+    /* ---- QUOTE ---- */
+    #quote { background: var(--red); padding: 80px 0; }
+    .quote-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    blockquote {
+      font-family: var(--font-head);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 700; color: #fff;
+      line-height: 1.35; margin-bottom: 24px;
+    }
+    .quote-attr {
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ---- METHODOLOGY ---- */
+    #methodology { background: #fff; border-top: 1px solid var(--n200); }
+    .method-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; margin-top: 52px;
+    }
+    .method-group { margin-bottom: 28px; }
+    .method-group-title {
+      font-size: 12px; font-weight: 700;
+      color: var(--charcoal); letter-spacing: .04em;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--n200);
+    }
+    .method-row {
+      display: flex; gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--n100);
+      align-items: flex-start;
+    }
+    .method-row:last-child { border-bottom: none; }
+    .method-label {
+      font-size: 12px; font-weight: 700;
+      color: var(--charcoal); min-width: 130px; flex-shrink: 0;
+    }
+    .method-value {
+      font-size: 12px; color: var(--gray); line-height: 1.5;
+    }
+    .cadence-table { width: 100%; border-collapse: collapse; }
+    .cadence-table th {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gray); text-align: left;
+      padding: 10px 14px;
+      background: var(--n100);
+      border-bottom: 1px solid var(--n200);
+    }
+    .cadence-table td {
+      padding: 12px 14px;
+      font-size: 12px; color: var(--charcoal);
+      border-bottom: 1px solid var(--n100);
+    }
+    .cadence-table td.freq {
+      font-weight: 700; color: var(--red);
+    }
+    .cadence-table tr:last-child td { border-bottom: none; }
+
+    /* ---- ABOUT ---- */
+    #about { background: var(--n50); border-top: 1px solid var(--n200); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 64px; align-items: start;
+      margin-top: 52px;
+    }
+    .about-card {
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-radius: 10px; padding: 36px;
+      text-align: center;
+    }
+    .about-initials {
+      width: 88px; height: 88px;
+      background: var(--charcoal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-size: 28px; font-weight: 800;
+      color: #fff; margin: 0 auto 20px;
+    }
+    .about-name {
+      font-family: var(--font-head);
+      font-size: 17px; font-weight: 800;
+      color: var(--charcoal); margin-bottom: 4px;
+    }
+    .about-title { font-size: 12px; color: var(--gray); line-height: 1.45; margin-bottom: 20px; }
+    .about-creds { display: flex; flex-direction: column; gap: 7px; }
+    .about-cred-item {
+      display: flex; gap: 8px; align-items: center;
+      font-size: 12px; color: var(--gray);
+    }
+    .cred-dot { width: 4px; height: 4px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+    .about-contact {
+      margin-top: 22px; padding-top: 22px;
+      border-top: 1px solid var(--n200);
+    }
+    .about-contact a {
+      display: block; font-size: 12px;
+      color: var(--red); text-decoration: none;
+      font-weight: 600; margin-bottom: 4px;
+    }
+    .about-contact a:hover { text-decoration: underline; }
+    .about-addr { font-size: 11px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+    .about-right {}
+    .scale-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-bottom: 36px;
+    }
+    .scale-card {
+      background: #fff;
+      border: 1px solid var(--n200);
+      border-radius: 8px; padding: 20px 22px;
+    }
+    .scale-num {
+      font-family: var(--font-head);
+      font-size: 30px; font-weight: 900;
+      color: var(--charcoal); letter-spacing: -.02em;
+    }
+    .scale-num .unit { font-size: 16px; color: var(--red); }
+    .scale-label { font-size: 12px; color: var(--gray); margin-top: 4px; }
+    .about-intro {
+      font-size: 16px; color: var(--gray);
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .about-intro strong { color: var(--charcoal); font-weight: 700; }
+    .clients-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 14px;
+    }
+    .clients-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .client-pill {
+      border: 1px solid var(--n200);
+      border-radius: 4px; padding: 5px 12px;
+      font-size: 12px; font-weight: 600; color: var(--gray);
+    }
+
+    /* ---- CTA ---- */
+    #cta { background: var(--charcoal); padding: 100px 0; text-align: center; }
+    #cta .eyebrow { color: var(--red); }
+    #cta .section-title { color: #fff; max-width: 20ch; margin: 0 auto 20px; }
+    #cta .section-lead { color: rgba(255,255,255,.45); max-width: 52ch; margin: 0 auto 44px; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-ghost-dark {
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.65);
+      font-size: 13px; font-weight: 600;
+      padding: 14px 26px; border-radius: 2px;
+      text-decoration: none;
+      transition: border-color var(--ease), color var(--ease);
+    }
+    .btn-ghost-dark:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #0D0D0D;
+      padding: 40px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { font-size: 12px; color: rgba(255,255,255,.3); }
+    .footer-left strong { color: rgba(255,255,255,.55); }
+    .footer-right { font-size: 11px; color: rgba(255,255,255,.2); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hero-grid, .paradox-header-row, .method-grid,
+      .arb-grid, .about-grid, .forces-grid { grid-template-columns: 1fr; }
+      .problem-cards { grid-template-columns: 1fr; }
+      .scale-stats { grid-template-columns: 1fr 1fr; }
+      section { padding: 72px 0; }
+      .container, .container-sm { padding: 0 24px; }
+      .nav-links { display: none; }
+      .lm-header { flex-direction: column; align-items: flex-start; }
+      .lm-header-right { text-align: left; }
+      .matrix-wrap { margin-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">NAI Robert Lynn <span>/ The Ports Report</span></a>
+  <div class="nav-links">
+    <a href="#paradox">The Paradox</a>
+    <a href="#four-forces">Four Forces</a>
+    <a href="#matrix">Decision Matrix</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#about">Chris Schupp</a>
+  </div>
+  <a href="mailto:cschupp@robertlynn.com" class="nav-cta">Schedule a Strategy Session</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-red-bar"></div>
+  <div class="hero-accent"></div>
+  <div class="container" style="width:100%;">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-overline reveal">
+          <span class="hero-dot"></span>
+          Strategic Intelligence Brief, April 2026
+        </div>
+        <h1 class="hero-h1 reveal d1">
+          Port selection is now the single largest <em>controllable variable</em> in U.S. supply-chain cost structure.
+        </h1>
+        <p class="hero-sub reveal d2">
+          Leading supply chain organizations have recognized that a 1% improvement in gateway choice and site timing is worth more than a 10% reduction in per-square-foot rent. The Ports Report is the proprietary, weekly-updated intelligence brief that makes that arbitrage visible and executable.
+        </p>
+        <div class="hero-cta-row reveal d3">
+          <a href="ports-report-deploy-2026/index.html" class="btn-primary">Access the Live Report</a>
+          <a href="#paradox" class="btn-ghost-light">Explore the framework &#8594;</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="hero-takeaway-card">
+          <div class="htc-header">Executive Takeaway</div>
+          <div class="htc-body">
+            <p class="htc-thesis">
+              Executive teams committing to 2027 distribution sites in the next 90 days are securing rates and incentives 18 to 24 months ahead of the next demand surge. Six of eight tracked gateways are already below 4% industrial vacancy.
+            </p>
+            <div class="htc-divider"></div>
+            <div class="htc-stats">
+              <div>
+                <div class="htc-stat-num accent">8</div>
+                <div class="htc-stat-label">Gateway Ports Tracked</div>
+              </div>
+              <div>
+                <div class="htc-stat-num">48.3M</div>
+                <div class="htc-stat-label">Combined TEU Volume</div>
+              </div>
+              <div>
+                <div class="htc-stat-num accent">14wk</div>
+                <div class="htc-stat-label">Avg. Search-to-Lease</div>
+              </div>
+              <div>
+                <div class="htc-stat-num">46yr</div>
+                <div class="htc-stat-label">Industrial Experience</div>
+              </div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,.07);margin:20px 0 16px;"></div>
+            <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.28);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">Port Intelligence / Health Score (throughput + vacancy + infrastructure)</div>
+            <div class="htc-updates">
+              <div class="htc-update">
+                <div class="htc-port">Los Angeles</div>
+                <div class="htc-text">752K TEUs Mar 2026, down 3% YoY<span class="hs-badge">7.2 / 10</span></div>
+              </div>
+              <div class="htc-update">
+                <div class="htc-port">Long Beach</div>
+                <div class="htc-text">774K TEUs Mar 2026, West Coast volume leader<span class="hs-badge">8.1 / 10</span></div>
+              </div>
+              <div class="htc-update">
+                <div class="htc-port">Charleston</div>
+                <div class="htc-text">Leatherman Terminal open, 700K TEU capacity added<span class="hs-badge">9.0 / 10</span></div>
+              </div>
+              <div class="htc-update">
+                <div class="htc-port">Houston</div>
+                <div class="htc-text">Project 11 deepening complete, ULCVs now calling<span class="hs-badge">7.8 / 10</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section id="exec-summary">
+  <div class="container">
+    <div class="exec-card reveal">
+      <div class="exec-header">
+        <div class="exec-title">Executive Summary</div>
+        <div class="exec-date">April 26, 2026 refresh</div>
+      </div>
+      <div class="exec-bullets">
+        <div class="exec-bullet">
+          <div class="exec-bullet-num">01</div>
+          <div class="exec-bullet-text">Six of eight major U.S. gateways now operate below 4% industrial vacancy -- the tightest supply conditions in 15 years. <strong>Best-in-class Class A bulk sites are being absorbed before reaching the open market.</strong></div>
+        </div>
+        <div class="exec-bullet">
+          <div class="exec-bullet-num">02</div>
+          <div class="exec-bullet-text">Nearshoring acceleration and Battery Belt demand represent <strong>structural, not cyclical, shifts.</strong> The gateways that benefit (Houston, Savannah, Charleston) are absorbing supply faster than speculative development can replenish it.</div>
+        </div>
+        <div class="exec-bullet">
+          <div class="exec-bullet-num">03</div>
+          <div class="exec-bullet-text">A single incorrect gateway selection adds <strong>$4.50 to $8.00 per TEU in permanent annual drayage cost</strong> -- a compounding liability that survives lease renewals. For a 200K TEU importer, that is $900K to $1.6M per year.</div>
+        </div>
+        <div class="exec-bullet">
+          <div class="exec-bullet-num">04</div>
+          <div class="exec-bullet-text">The 14-week Search-to-Lease-Execution (SLE) timeline delivered by this platform represents a <strong>70%+ compression</strong> versus the 6 to 9 month market average. In logistics, that gap is not a scheduling advantage -- it is port-to-shelf velocity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PORT SELECTION PARADOX -->
+<section id="paradox">
+  <div class="container">
+    <div class="paradox-header-row">
+      <div>
+        <div class="eyebrow reveal">The Port Selection Paradox</div>
+        <h2 class="section-title reveal d1" style="max-width:18ch;">Most companies treat their largest controllable cost driver as a static input.</h2>
+        <p class="section-lead reveal d2">Information asymmetry between real-time port dynamics and traditional brokerage processes leads to permanently elevated Total Cost of Logistics (TCOL). The data are unambiguous: the companies that solve for gateway selection with the same rigor as manufacturing footprint decisions consistently outperform on landed cost.</p>
+      </div>
+      <div class="reveal d2">
+        <div class="diagnostic-matrix">
+          <div class="dm-header">Diagnostic Framework: Where Value Leaks</div>
+          <div class="dm-body">
+            <div class="dm-axis-label">X-axis: Data Timeliness / Y-axis: Market Scope</div>
+            <div class="dm-grid">
+              <div class="dm-cell header"></div>
+              <div class="dm-cell header">Single-Market Scope</div>
+              <div class="dm-cell header">Multi-Gateway Scope</div>
+              <div class="dm-cell header" style="writing-mode:vertical-rl;text-align:center;padding:12px 8px;font-size:9px;">Real-Time Data</div>
+              <div class="dm-cell good">Operationally sound. Misses cross-gateway arbitrage.</div>
+              <div class="dm-cell good">Optimal position. Maximum arbitrage captured.</div>
+              <div class="dm-cell header" style="writing-mode:vertical-rl;text-align:center;padding:12px 8px;font-size:9px;">Stale Data</div>
+              <div class="dm-cell bad">High TCOL. Most common traditional brokerage outcome.</div>
+              <div class="dm-cell mid">Wider view, but decisions lag market reality by quarters.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="problem-cards">
+      <div class="problem-card reveal d1">
+        <div class="pc-num">01</div>
+        <div class="pc-title">Stale market data</div>
+        <div class="pc-body">Most industrial brokers cite vacancy and rent figures that lag conditions by one to three quarters. In port-proximate markets tightening at 0.3% per month, that lag is a quantified liability, not a minor inconvenience.</div>
+      </div>
+      <div class="problem-card dark reveal d2">
+        <div class="pc-num">02</div>
+        <div class="pc-title">Wrong-gateway selection</div>
+        <div class="pc-body">A single incorrect gateway choice adds $4.50 to $8.00 per TEU in excess drayage, forfeits FTZ duty savings averaging 0.3 to 1.1% of import value, and compounds inventory carrying costs every quarter. Most organizations never model it.</div>
+      </div>
+      <div class="problem-card reveal d3">
+        <div class="pc-num">03</div>
+        <div class="pc-title">Search timelines that create revenue lag</div>
+        <div class="pc-body">The traditional 6 to 9 month mandate-to-lease process means operating from a suboptimal facility for years. Every week beyond Week 14 carries a direct carrying-cost penalty that compounds across the safety-stock portfolio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE LEAKAGE MODEL -->
+<section id="leakage" style="background:var(--n50);padding-top:0;border-top:none;">
+  <div class="container">
+    <div class="leakage-model reveal">
+      <div class="lm-header">
+        <div class="lm-header-left">
+          <div class="lm-overline">Value Leakage Model</div>
+          <div class="lm-title">Total Cost of Logistics (TCOL)<br>Annual Impact Analysis</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:6px;">Illustrative model, 200K TEU annual import operation, Class A bulk, single gateway</div>
+        </div>
+        <div class="lm-header-right">
+          <div class="lm-total-label">Potential Annual Value Creation</div>
+          <div class="lm-total-val">$1.8M to $4.1M</div>
+          <div class="lm-total-sub">200K TEU baseline scenario</div>
+        </div>
+      </div>
+      <table class="leakage">
+        <thead>
+          <tr>
+            <th style="width:32%;">Cost Driver</th>
+            <th>Uninformed Selection</th>
+            <th class="red">With The Ports Report</th>
+            <th>Annual Value at Stake</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="ld-driver">Drayage and Inland Transportation Premium</div>
+              <div class="ld-sub">Wrong-gateway selection adds round-trip truck miles and port-congestion surcharges at every shipment</div>
+              <div class="ld-bar-wrap">
+                <div class="ld-bar-track"><div class="ld-bar-fill" style="width:85%;"></div></div>
+              </div>
+            </td>
+            <td>
+              <div class="ld-bad">+$4.50 to $8.00 per TEU</div>
+              <div class="ld-sub">$900K to $1.6M annual excess on 200K TEU</div>
+            </td>
+            <td>
+              <div class="ld-good">Optimized gateway routing</div>
+              <div class="ld-good-sub">Cross-gateway drayage modeled at intake</div>
+            </td>
+            <td>
+              <div class="ld-impact">$900K to $1.6M</div>
+              <div class="ld-impact-sub">per 200K TEU annually</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ld-driver">FTZ and Duty Optimization</div>
+              <div class="ld-sub">Inverted tariff benefits, MPF reduction, and Section 321 de minimis left unclaimed</div>
+              <div class="ld-bar-wrap">
+                <div class="ld-bar-track"><div class="ld-bar-fill" style="width:65%;"></div></div>
+              </div>
+            </td>
+            <td>
+              <div class="ld-bad">0% to 0.3% of import value captured</div>
+              <div class="ld-sub">FTZ proximity rarely mapped in advance</div>
+            </td>
+            <td>
+              <div class="ld-good">Full FTZ mapping and activation roadmap</div>
+              <div class="ld-good-sub">Every gateway profiled for FTZ eligibility at intake</div>
+            </td>
+            <td>
+              <div class="ld-impact">$400K to $1.2M</div>
+              <div class="ld-impact-sub">on $100M import value</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ld-driver">Search-to-Lease-Execution (SLE) Timeline</div>
+              <div class="ld-sub">Delayed optimal-submarket occupancy, compounding across every SKU held in a suboptimal facility</div>
+              <div class="ld-bar-wrap">
+                <div class="ld-bar-track"><div class="ld-bar-fill" style="width:50%;"></div></div>
+              </div>
+            </td>
+            <td>
+              <div class="ld-bad">6 to 9 months typical</div>
+              <div class="ld-sub">Opportunity cost compounds weekly at current rent rates</div>
+            </td>
+            <td>
+              <div class="ld-good">14 weeks average (70%+ compression)</div>
+              <div class="ld-good-sub">Intelligence-driven intake eliminates the discovery phase</div>
+            </td>
+            <td>
+              <div class="ld-impact">$300K to $700K</div>
+              <div class="ld-impact-sub">5+ months occupancy cost recaptured</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ld-driver">Safety Stock Carrying Cost Premium</div>
+              <div class="ld-sub">Higher inventory buffers required when operating from a congested gateway with limited drayage options</div>
+              <div class="ld-bar-wrap">
+                <div class="ld-bar-track"><div class="ld-bar-fill" style="width:40%;"></div></div>
+              </div>
+            </td>
+            <td>
+              <div class="ld-bad">15 to 22% above optimal holding level</div>
+              <div class="ld-sub">Safety stock up 22% since 2021 (FMC, 2024)</div>
+            </td>
+            <td>
+              <div class="ld-good">Market-matched, low-vacancy location</div>
+              <div class="ld-good-sub">Tight gateway eliminates buffer inflation</div>
+            </td>
+            <td>
+              <div class="ld-impact">$200K to $600K</div>
+              <div class="ld-impact-sub">annual holding cost reduction</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="lm-footer">
+        <div class="lm-footer-total">Total potential annual value creation: <span>$1.8M to $4.1M</span> per 200K TEU operation</div>
+        <div class="lm-sensitivity">
+          <div class="lm-sens-item">
+            <div class="lm-sens-label">Scenario</div>
+            <div class="lm-sens-vol">100K TEU</div>
+            <div class="lm-sens-range">$0.9M to $2.1M</div>
+          </div>
+          <div class="lm-sens-item">
+            <div class="lm-sens-label">Scenario</div>
+            <div class="lm-sens-vol">200K TEU</div>
+            <div class="lm-sens-range">$1.8M to $4.1M</div>
+          </div>
+          <div class="lm-sens-item">
+            <div class="lm-sens-label">Scenario</div>
+            <div class="lm-sens-vol">500K TEU</div>
+            <div class="lm-sens-range">$4.5M to $10.2M</div>
+          </div>
+        </div>
+        <div class="source-note">Model is illustrative. Actual outcomes depend on commodity type, origin region, and specific gateway selection. Sources: American Trucking Associations Drayage and Intermodal Cost Survey (2025); Foreign-Trade Zones Board Annual Report to Congress, FY2024; Federal Maritime Commission Detention and Demurrage Study (2024); CoStar Industrial Availability Report, Q1 2026.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR FORCES -->
+<section id="four-forces">
+  <div class="container">
+    <div class="forces-intro">
+      <div class="eyebrow reveal">Strategic Framework, 2026 to 2027</div>
+      <h2 class="section-title reveal d1">The Four Forces Reshaping U.S. Gateway Strategy</h2>
+      <p class="section-lead reveal d2">These are not cyclical trends. They are structural shifts in supply-chain architecture that will determine which ports and which submarkets capture the next wave of institutional industrial demand. Each force is tracked weekly in The Ports Report with leading indicators and site-selection implications.</p>
+    </div>
+    <div class="forces-grid">
+      <div class="force-card reveal d1">
+        <div class="force-num">Force 01</div>
+        <div class="force-title">Mexico Nearshoring Surge</div>
+        <div class="force-body">Manufacturing migration from Asia to northern Mexico is accelerating along the Gulf Coast and inland corridors. As product routes consolidate through Houston, Laredo, and El Paso, Gulf port industrial markets are recording absorption levels not seen in a decade. This creates a narrow, time-limited window for tenants to secure sites ahead of the curve.</div>
+        <div class="force-triad">
+          <div class="force-triad-row">
+            <div class="ft-label">Leading Indicator</div>
+            <div class="ft-text">Houston industrial absorption <strong>+18% year-over-year</strong>; Class I rail carload growth through Eagle Pass at a 5-year high</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Implication</div>
+            <div class="ft-text">Houston is the most available major gateway (5.1% vacancy) with FTZ 84 -- one of the largest in the U.S. -- offering inverted-tariff benefits on Mexican-manufactured goods</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Action</div>
+            <div class="ft-text">Prioritize Houston and Gulf Coast submarkets for nearshoring-dependent operations before current availability window closes</div>
+          </div>
+        </div>
+      </div>
+      <div class="force-card reveal d2">
+        <div class="force-num">Force 02</div>
+        <div class="force-title">Infrastructure Velocity</div>
+        <div class="force-body">Post-IIJA harbor deepening and rail intermodal investments are now delivering measurable throughput gains. Channel depth directly determines vessel class access: a 53-ft channel accommodates Ultra Large Container Vessels (ULCVs) at 18,000-plus TEU capacity, reducing per-TEU vessel cost by 12 to 18% versus Panamax-class calls. Ports that received capital in 2022 to 2024 are now widening their competitive advantage.</div>
+        <div class="force-triad">
+          <div class="force-triad-row">
+            <div class="ft-label">Leading Indicator</div>
+            <div class="ft-text">Savannah vessel-to-rail transfer now <strong>22 hours</strong> (industry best-in-class); Charleston Leatherman Terminal adds 700K TEU annual capacity</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Implication</div>
+            <div class="ft-text">Ports with completed deepening programs (Savannah 47 ft, Charleston 52 ft, Norfolk 55 ft) are pulling ahead on per-TEU economics and vessel schedule reliability</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Action</div>
+            <div class="ft-text">Weight channel depth of 50 ft or greater heavily in gateway scoring models; sub-50 ft ports face growing vessel-class access constraints through 2027</div>
+          </div>
+        </div>
+      </div>
+      <div class="force-card reveal d3">
+        <div class="force-num">Force 03</div>
+        <div class="force-title">The Battery Belt</div>
+        <div class="force-body">EV gigafactories in Georgia, Tennessee, and the Carolinas have created a new structural import corridor for cathode materials, battery cells, and EV components. Savannah and Charleston are emerging as the primary gateways for this trade flow, compressing industrial vacancy in their markets at a rate that outpaces all other coastal regions. This is a demand driver that will not reverse on a business cycle.</div>
+        <div class="force-triad">
+          <div class="force-triad-row">
+            <div class="ft-label">Leading Indicator</div>
+            <div class="ft-text"><strong>14-plus gigafactory announcements</strong> within 150 miles of Charleston and Savannah since 2022; Savannah asking rent up 38% over three years</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Implication</div>
+            <div class="ft-text">Both markets now hold sub-3% industrial vacancy. New Class A bulk supply is being pre-leased before delivery, eliminating the traditional available-space window</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Action</div>
+            <div class="ft-text">Secure Southeast sites in Q2 or Q3 2026; waiting for the market to signal scarcity will mean waiting 12 to 18 months longer than necessary</div>
+          </div>
+        </div>
+      </div>
+      <div class="force-card reveal d4">
+        <div class="force-num">Force 04</div>
+        <div class="force-title">Inventory Elasticity Collapse</div>
+        <div class="force-body">Corporate supply chain officers have structurally shifted from just-in-time to just-in-case inventory management. Average safety stock targets are up 22% since 2021, permanently increasing demand for port-proximate industrial space. The companies moving fastest are locking in sites before the requirement fully materializes in their own planning cycles -- by which point the best sites are already off the market.</div>
+        <div class="force-triad">
+          <div class="force-triad-row">
+            <div class="ft-label">Leading Indicator</div>
+            <div class="ft-text">Six of eight tracked gateways hold <strong>sub-3.5% industrial vacancy</strong>; national bulk availability at a 15-year low; safety stock targets up 22% since 2021</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Implication</div>
+            <div class="ft-text">Class A bulk sites near all major gateways are being absorbed before they reach the marketed-available stage. The traditional "look, then decide" search sequence is no longer viable</div>
+          </div>
+          <div class="force-triad-row">
+            <div class="ft-label">Action</div>
+            <div class="ft-text">Initiate site searches in Q2 to Q3 2026 for 2027 to 2028 occupancy. Peak-cycle escalation will compound costs significantly for mandates starting in late 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="source-note reveal" style="margin-top:28px;">Framework updated weekly. Sources: AAPA Annual Report, CoStar Industrial Reports Q1 2026, USACE Harbor Performance Monitor, Georgia Quick Start program data, FMC Detention and Demurrage Study 2024.</div>
+  </div>
+</section>
+
+<!-- DECISION MATRIX -->
+<section id="matrix">
+  <div class="container">
+    <div class="eyebrow reveal">8-Port Decision Matrix</div>
+    <h2 class="section-title reveal d1">Benchmarked performance of America's primary container gateways</h2>
+    <p class="section-lead reveal d2">The metrics institutional logistics decision-makers weight most heavily: throughput scale, vessel-class access, industrial availability, occupancy cost, and composite fitness for a logistics mandate. Data as of April 26, 2026.</p>
+    <div class="matrix-wrap reveal d2">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th style="width:46px;">Rank</th>
+            <th>Gateway</th>
+            <th>Region</th>
+            <th class="r">Annual TEU</th>
+            <th class="r">Channel Depth</th>
+            <th class="c">Ind. Vacancy</th>
+            <th class="r">Asking Rent NNN</th>
+            <th class="c">Fitness Score*</th>
+            <th>Strategic Implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rb-top">1</span></td>
+            <td class="gw-name">Los Angeles</td>
+            <td><span class="region-pill">West Coast</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">10.2M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:100%;"></div></div></div></td>
+            <td class="r">53 ft</td>
+            <td class="c"><span class="vac-tight">2.8%</span></td>
+            <td class="r" style="font-weight:700;">$17.40</td>
+            <td class="c"><span class="fitness-score fs-high">92</span></td>
+            <td><div class="implication">Volume leader. Optimal for West Coast distribution and import-heavy supply chains requiring maximum carrier choice.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-top">2</span></td>
+            <td class="gw-name">Long Beach</td>
+            <td><span class="region-pill">West Coast</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">9.9M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:97%;"></div></div></div></td>
+            <td class="r">53 ft</td>
+            <td class="c"><span class="vac-tight">2.8%</span></td>
+            <td class="r" style="font-weight:700;">$17.40</td>
+            <td class="c"><span class="fitness-score fs-high">90</span></td>
+            <td><div class="implication">ULCV-capable. Best for bulk Asian consumer goods on the Pacific route. Leads West Coast throughput in early 2026.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-top">3</span></td>
+            <td class="gw-name">New York / New Jersey</td>
+            <td><span class="region-pill">East Coast</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">8.9M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:87%;"></div></div></div></td>
+            <td class="r">50 ft</td>
+            <td class="c"><span class="vac-mod">4.1%</span></td>
+            <td class="r" style="font-weight:700;">$19.80</td>
+            <td class="c"><span class="fitness-score fs-strong">87</span></td>
+            <td><div class="implication">East Coast volume leader. Premium rent reflects Northeast market proximity. Moderate vacancy offers more flexibility than Southeast peers.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-std">4</span></td>
+            <td class="gw-name">Savannah</td>
+            <td><span class="region-pill">Southeast</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">5.7M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:56%;"></div></div></div></td>
+            <td class="r">47 ft</td>
+            <td class="c"><span class="vac-tight">3.2%</span></td>
+            <td class="r" style="font-weight:700;">$8.90</td>
+            <td class="c"><span class="fitness-score fs-high">88</span></td>
+            <td><div class="implication">Battery Belt primary gateway. Fastest-growing major port. Move now -- supply absorption is outpacing new construction.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-std">5</span></td>
+            <td class="gw-name">Houston / Texas</td>
+            <td><span class="region-pill">Gulf Coast</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">4.3M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:42%;"></div></div></div></td>
+            <td class="r">46.5 ft</td>
+            <td class="c"><span class="vac-avail">5.1%</span></td>
+            <td class="r" style="font-weight:700;">$9.60</td>
+            <td class="c"><span class="fitness-score fs-strong">79</span></td>
+            <td><div class="implication">Best available opportunity. Project 11 complete. Nearshoring + available inventory create a 2026 entry window before vacancy tightens.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-std">6</span></td>
+            <td class="gw-name">Norfolk / Hampton Roads</td>
+            <td><span class="region-pill">Mid-Atlantic</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">3.5M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:34%;"></div></div></div></td>
+            <td class="r">55 ft</td>
+            <td class="c"><span class="vac-mod">3.8%</span></td>
+            <td class="r" style="font-weight:700;">$10.20</td>
+            <td class="c"><span class="fitness-score fs-strong">84</span></td>
+            <td><div class="implication">Deepest East Coast channel. Optimal for super-large vessels and Mid-Atlantic distribution. Four ULCV berths operational.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-std">7</span></td>
+            <td class="gw-name">Seattle / Tacoma</td>
+            <td><span class="region-pill">Pacific NW</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">3.2M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:31%;"></div></div></div></td>
+            <td class="r">51 ft</td>
+            <td class="c"><span class="vac-mod">4.6%</span></td>
+            <td class="r" style="font-weight:700;">$14.20</td>
+            <td class="c"><span class="fitness-score fs-strong">78</span></td>
+            <td><div class="implication">Pacific Northwest niche. Critical link for Alaska trade and Trans-Pacific route diversification. Bonded warehousing at capacity -- tariff-driven hold patterns active.</div></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rb-std">8</span></td>
+            <td class="gw-name">Charleston</td>
+            <td><span class="region-pill">Southeast</span></td>
+            <td class="r"><div class="teu-cell"><span style="font-weight:700;color:#fff;">2.6M</span><div class="teu-bar-bg"><div class="teu-bar-fill" style="width:25%;"></div></div></div></td>
+            <td class="r">52 ft</td>
+            <td class="c"><span class="vac-tight">2.9%</span></td>
+            <td class="r" style="font-weight:700;">$7.80</td>
+            <td class="c"><span class="fitness-score fs-high">86</span></td>
+            <td><div class="implication">Best value in the Southeast. ULCV-ready. Leatherman Terminal adds significant new capacity -- the strongest near-term entry point for Battery Belt supply chains.</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="matrix-footer reveal">
+      <div class="matrix-source">Sources: AAPA (TEU volumes), CoStar Industrial Availability Report Q1 2026 (vacancy/rent), USACE Harbor Performance Monitor 2024 (channel depth).</div>
+      <div class="fitness-footnote">*Port Fitness Score: proprietary NAI Robert Lynn weighted index. Components: TEU throughput scale (25%), channel depth and vessel-class access (20%), industrial vacancy inversion (20%), on-dock and Class I rail access (15%), FTZ strength and coverage (10%), infrastructure trajectory (10%). Scale 0 to 100.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INFORMATION ARBITRAGE -->
+<section id="arbitrage">
+  <div class="container">
+    <div class="eyebrow reveal">Information Arbitrage</div>
+    <h2 class="section-title reveal d1" style="max-width:22ch;">The gap between a transactional broker and a strategic supply chain node.</h2>
+    <p class="section-lead reveal d2">Traditional brokerage firms operate as market-local matchmakers, with data that lags conditions by one to three quarters. Leading supply chain organizations we advise have shifted to treating gateway selection as a continuous intelligence function, not a one-time project. The result is a 70%+ compression in the SLE timeline and a permanent reduction in TCOL.</p>
+    <div class="arb-grid">
+      <div class="reveal d2">
+        <div class="arb-callout">
+          <div class="arb-callout-label">The Core Asymmetry</div>
+          <div class="arb-callout-text">While a conventional broker is assembling a comp set from last quarter's CoStar pull, The Ports Report has already identified the three viable sites, modeled drayage against four gateway scenarios, mapped FTZ eligibility, and assessed channel-depth suitability for the client's primary carrier's vessel class. The information gap is not a matter of effort -- it is a matter of architecture.</div>
+        </div>
+        <div style="margin-top:20px;">
+        <div class="arb-vs">
+          <div class="arb-vs-head">
+            <div class="arb-col nai">
+              <div class="arb-col-label">NAI Robert Lynn</div>
+              <div class="arb-col-sub">Intelligence-Driven Platform</div>
+            </div>
+            <div class="arb-col trad">
+              <div class="arb-col-label">Traditional Brokerage</div>
+              <div class="arb-col-sub">Relationship-Led Process</div>
+            </div>
+          </div>
+          <div class="arb-rows">
+            <div class="arb-row">
+              <div class="arb-cell nai-cell"><span class="hl">14 weeks</span> avg. SLE timeline</div>
+              <div class="arb-cell trad-cell">6 to 9 months typical</div>
+            </div>
+            <div class="arb-row">
+              <div class="arb-cell nai-cell"><span class="hl">8 gateways</span> benchmarked at intake</div>
+              <div class="arb-cell trad-cell">1 to 2 markets, locally known</div>
+            </div>
+            <div class="arb-row">
+              <div class="arb-cell nai-cell"><span class="hl">Weekly</span> data refresh</div>
+              <div class="arb-cell trad-cell">Quarterly at best</div>
+            </div>
+            <div class="arb-row">
+              <div class="arb-cell nai-cell"><span class="hl">FTZ + drayage</span> modeled at intake</div>
+              <div class="arb-cell trad-cell">Rarely modeled in advance</div>
+            </div>
+            <div class="arb-row">
+              <div class="arb-cell nai-cell"><span class="hl">Tenant-only</span> -- no dual agency</div>
+              <div class="arb-cell trad-cell">Dual agency common</div>
+            </div>
+            <div class="arb-row">
+              <div class="arb-cell nai-cell"><span class="hl">375+ offices</span> global network</div>
+              <div class="arb-cell trad-cell">Regional footprint</div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="arb-right reveal d3">
+        <div class="arb-stat">
+          <div><div class="arb-stat-num">14<span class="unit">wk</span></div></div>
+          <div>
+            <div class="arb-stat-title">Average Search-to-Lease-Execution timeline</div>
+            <div class="arb-stat-body">Benchmarked against a market average of 6 to 9 months. Every week beyond Week 14 carries a direct, calculable carrying-cost penalty compounding across the entire safety-stock portfolio. The 70%+ SLE compression is the single largest line item in the value leakage model.</div>
+          </div>
+        </div>
+        <div class="arb-stat">
+          <div><div class="arb-stat-num">46<span class="unit">yr</span></div></div>
+          <div>
+            <div class="arb-stat-title">Industrial brokerage experience</div>
+            <div class="arb-stat-body">Chris Schupp has been executing industrial mandates since 1978, including Fortune 500 engagements spanning 15-plus states and more than 12 million square feet. That pattern recognition is embedded in the Ports Report framework, not incidental to it.</div>
+          </div>
+        </div>
+        <div class="arb-stat">
+          <div><div class="arb-stat-num">375<span class="unit">+</span></div></div>
+          <div>
+            <div class="arb-stat-title">NAI Global offices, worldwide</div>
+            <div class="arb-stat-body">Local market intelligence at every gateway port, coordinated under a single tenant-only mandate with complete conflict-of-interest separation. No dual agency. No landlord relationships that dilute the advisory.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote">
+  <div class="container">
+    <div class="quote-inner reveal">
+      <blockquote>"Our job is to give clients options, and let the market do the negotiating."</blockquote>
+      <div class="quote-attr">Christopher H. Schupp, Executive Managing Director, NAI Robert Lynn</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+  <div class="container">
+    <div class="container-sm" style="padding:0;">
+      <div class="eyebrow reveal">Methodology and Data Sources</div>
+      <h2 class="section-title reveal d1">How The Ports Report is built and validated</h2>
+      <p class="section-lead reveal d2">Every data point in The Ports Report is sourced from a named, primary authority and updated on a defined cadence. The methodology below is provided for institutional clients and executive teams who require documented data provenance before incorporating intelligence into strategic decisions.</p>
+    </div>
+    <div class="method-grid">
+      <div class="reveal d1">
+        <div class="method-group">
+          <div class="method-group-title">Primary Data Sources</div>
+          <div class="method-row">
+            <div class="method-label">TEU Volumes</div>
+            <div class="method-value">American Association of Port Authorities (AAPA) Annual Statistics. Supplemented by monthly port authority cargo reports where available.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Industrial Vacancy and Rent</div>
+            <div class="method-value">CoStar Industrial Availability Report, monthly. Class A bulk, 100K SF-plus, within 25 miles of port terminals.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Channel Depth</div>
+            <div class="method-value">U.S. Army Corps of Engineers (USACE) Harbor Performance Monitor, 2024 Annual Summary. Cross-referenced against individual port authority published specifications.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">FTZ Data</div>
+            <div class="method-value">Foreign-Trade Zones Board Annual Report to Congress, FY2024. Zone boundaries and activation status cross-checked against NAFTZ member directory.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Drayage Cost Benchmarks</div>
+            <div class="method-value">American Trucking Associations (ATA) Drayage and Intermodal Cost Survey, 2025.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Tariff Data</div>
+            <div class="method-value">USTR Section 301 database (ustr.gov). HTS-level tariff rates for commodity exposure modeling.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Safety Stock and Demurrage</div>
+            <div class="method-value">Federal Maritime Commission (FMC) Detention and Demurrage Study, 2024.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="method-group">
+          <div class="method-group-title">Refresh Cadence</div>
+          <table class="cadence-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Cadence</th>
+                <th>What Changes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ticker and dates</td>
+                <td class="freq">Weekly</td>
+                <td>Vessel counts, turnaround, headline updates</td>
+              </tr>
+              <tr>
+                <td>Decision Matrix</td>
+                <td class="freq">Monthly</td>
+                <td>Vacancy and asking rent, all 8 gateways</td>
+              </tr>
+              <tr>
+                <td>Port Brief KPIs</td>
+                <td class="freq">Monthly</td>
+                <td>Per-port vacancy and rent from CoStar</td>
+              </tr>
+              <tr>
+                <td>Four Forces</td>
+                <td class="freq">Quarterly</td>
+                <td>Macro narrative, leading indicators, implications</td>
+              </tr>
+              <tr>
+                <td>International Corridors</td>
+                <td class="freq">Quarterly</td>
+                <td>Tariff references, corridor recommendations</td>
+              </tr>
+              <tr>
+                <td>Linneman Letter</td>
+                <td class="freq">Quarterly</td>
+                <td>Link URL and seasonal edition label</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="method-group" style="margin-top:28px;">
+          <div class="method-group-title">Port Fitness Score Methodology</div>
+          <div class="method-row">
+            <div class="method-label">TEU throughput scale</div>
+            <div class="method-value">25% weight. Normalized 0 to 100 against 8-gateway universe.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Channel depth and vessel access</div>
+            <div class="method-value">20% weight. 55 ft scores 100; 46 ft scores base. ULCV access threshold at 50 ft.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Industrial vacancy inversion</div>
+            <div class="method-value">20% weight. Lower vacancy scores higher (supply-constrained = lower TCOL risk).</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Rail and intermodal access</div>
+            <div class="method-value">15% weight. On-dock rail, Class I connections, double-stack clearance.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">FTZ strength</div>
+            <div class="method-value">10% weight. Zone size, activation status, proximity to industrial corridors.</div>
+          </div>
+          <div class="method-row">
+            <div class="method-label">Infrastructure trajectory</div>
+            <div class="method-value">10% weight. IIJA projects in execution, berth expansion, automation investment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT CHRIS -->
+<section id="about" style="background:var(--n50);border-top:1px solid var(--n200);">
+  <div class="container">
+    <div class="eyebrow reveal">About the Advisor</div>
+    <div class="about-grid">
+      <div class="reveal d1">
+        <div class="about-card">
+          <div class="about-initials">CS</div>
+          <div class="about-name">Christopher H. Schupp</div>
+          <div class="about-title">Executive Managing Director, Corporate Services<br />NAI Robert Lynn</div>
+          <div class="about-creds">
+            <div class="about-cred-item"><span class="cred-dot"></span>B.A. Westminster College</div>
+            <div class="about-cred-item"><span class="cred-dot"></span>CCIM 101 to 104</div>
+            <div class="about-cred-item"><span class="cred-dot"></span>Licensed TX Real Estate Broker</div>
+            <div class="about-cred-item"><span class="cred-dot"></span>D CEO Power Broker 2025</div>
+            <div class="about-cred-item"><span class="cred-dot"></span>Industrial brokerage since 1978, Kansas City</div>
+          </div>
+          <div class="about-contact">
+            <a href="mailto:cschupp@robertlynn.com">cschupp@robertlynn.com</a>
+            <a href="tel:12142567159">(214) 256-7159</a>
+            <div class="about-addr">4851 LBJ Freeway, 10th Floor<br />Dallas, TX 75244</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right reveal d2">
+        <div class="scale-stats">
+          <div class="scale-card">
+            <div class="scale-num">46<span class="unit">yr</span></div>
+            <div class="scale-label">Industrial brokerage, beginning in Kansas City (1978)</div>
+          </div>
+          <div class="scale-card">
+            <div class="scale-num">12M<span class="unit">+</span></div>
+            <div class="scale-label">Square feet placed in industrial mandates near gateway markets</div>
+          </div>
+          <div class="scale-card">
+            <div class="scale-num">375<span class="unit">+</span></div>
+            <div class="scale-label">NAI Global offices providing local market intelligence</div>
+          </div>
+          <div class="scale-card">
+            <div class="scale-num">14<span class="unit">wk</span></div>
+            <div class="scale-label">Average Search-to-Lease-Execution timeline, vs. 6 to 9 months market average</div>
+          </div>
+        </div>
+        <p class="about-intro">
+          Chris Schupp has been executing industrial logistics mandates near U.S. container ports since 1978. He was the <strong>youngest partner at Fults and Associates in Dallas</strong> in the early 1980s, joined NAI Robert Lynn in 2002, and built the firm's national tenant representation practice from scratch. His transaction history spans <strong>Fortune 500 logistics mandates in 15-plus states</strong> and more than 12 million square feet of industrial placement near gateway markets.
+        </p>
+        <p class="about-intro">
+          The Ports Report is not a marketing tool. It is a <strong>working intelligence platform</strong> that Chris updates weekly, uses to open conversations with institutional logistics leadership, and deploys at the start of every mandate. The data leads. The advisory follows.
+        </p>
+        <div class="clients-label">Select client engagements</div>
+        <div class="clients-wrap">
+          <span class="client-pill">Lennox Industries</span>
+          <span class="client-pill">Brinks Home Security</span>
+          <span class="client-pill">MCI</span>
+          <span class="client-pill">Retalix</span>
+          <span class="client-pill">Better Business Bureau</span>
+          <span class="client-pill">The Crescent</span>
+          <span class="client-pill">Park Central</span>
+          <span class="client-pill">One Main Place</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="eyebrow reveal">Begin the Conversation</div>
+    <h2 class="section-title reveal d1">Ready to model your optimal gateway?</h2>
+    <p class="section-lead reveal d2">Chris takes on a limited number of port-proximate industrial mandates each year. If your organization has a site selection need within 50 miles of a U.S. container gateway, the conversation starts here.</p>
+    <div class="cta-buttons reveal d3">
+      <a href="mailto:cschupp@robertlynn.com" class="btn-primary">Schedule a Strategy Session</a>
+      <a href="ports-report-deploy-2026/index.html" class="btn-ghost-dark">Access the Live Report</a>
+      <a href="ports-report-deploy-2026/NAI-Global-Ports-Report-2026.pdf" class="btn-ghost-dark">Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>NAI Robert Lynn</strong> / The Ports Report, April 2026<br />
+        4851 LBJ Freeway, 10th Floor, Dallas TX 75244
+      </div>
+      <div class="footer-right">
+        Data sources: AAPA, CoStar, USACE, USTR, ATA, FMC, FTZ Board. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // Hero reveals immediately
+  document.querySelectorAll('#hero .reveal, #exec-summary .reveal').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 80);
+  });
+
+  // Scroll-linked nav highlight
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const links = Array.from(document.querySelectorAll('.nav-links a'));
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY + 120;
+    let current = '';
+    sections.forEach(s => { if (scrollY >= s.offsetTop) current = s.id; });
+    links.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? '#fff' : 'rgba(255,255,255,.5)';
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
